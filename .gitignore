@@ -1,23 +1,63 @@
-# Compiled class file
+#실행 파일
+*.com
 *.class
+*.dll
+*.exe
+*.o
+*.so
 
-# Log file
-*.log
+#문서
+*.pptx
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+*.pdf
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
+#압축 파일
+*.7z
+*.dmg
+*.gz
+*.iso
 *.rar
+*.tar
+*.zip
+*.jar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+#로그 파일, 업로드 폴더
+*.log
+upload/
+logs/
+
+#맥, 윈도우 시스템 파일 제외
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+#이클립스 설정 파일
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+.externalToolBuilders/
+*.launch
+.classpath
+.factorypath
+.buildpath
+.target
+.tern-project
+.springBeans
+.recommenders/
