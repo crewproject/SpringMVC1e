@@ -28,12 +28,7 @@ public class HomeController {
 		//한글 주석 테스트
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("message", "한글 테스트" );
 		
 		return "home";
 	}
