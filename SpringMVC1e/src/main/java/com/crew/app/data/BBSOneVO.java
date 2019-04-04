@@ -1,6 +1,6 @@
 package com.crew.app.data;
 
-public class BBSSelectOneVO {
+public class BBSOneVO {
 
 	//게시물 아이디
     private Integer id;
