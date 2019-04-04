@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 <!-- 	<context:property-placeholder location="/WEB-INF/config/*.properties" /> -->
 		
 	<!-- DataSource -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="/WEB-INF/config/config.properties"/>
+        <property name="location" value="file:src/main/webapp/WEB-INF/config/config.properties"/>
         <property name="fileEncoding" value="UTF-8" />
     </bean>
     
@@ -39,7 +37,7 @@
 		<property name="mapperLocations" value="classpath:com/crew/app/*/dao/*.xml"/>
     </bean>
     
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>	
 	</bean>
 </beans>
