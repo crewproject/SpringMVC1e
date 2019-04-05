@@ -2,6 +2,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -9,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.crew.app.board.service.BoardService;
+import com.crew.app.data.BBSInsertVO;
 import com.crew.app.data.BBSListVO;
 import com.crew.app.data.BBSOneVO;
 
@@ -19,8 +21,25 @@ public class BoardServiceTest {
 	
 	@Inject
 	BoardService bs;
+	@Test@Ignore
+	public void newBBSTest() {
+		BBSInsertVO vo = new BBSInsertVO();
+		vo.setName("test");
+		vo.setEmail("testEmail");
+		vo.setPass("test");
+		vo.setTitle("testTitle");
+		vo.setComment("testComment");
+		vo.setIp("testIP");
+		bs.newBBS(vo);
+	}
+	
+	@Test@Ignore
+	public void deleteBBSTest() {
+		String id= "12";
+		bs.deleteBBS(id);
+	}
 
-	@Test
+	@Test@Ignore
 	public void getListBBSTest() {
 		List<BBSListVO> bbsList = bs.getListBBS();
 		System.out.println("=========boardServiceTest - getList Test============");
@@ -34,7 +53,7 @@ public class BoardServiceTest {
 		}
 	}
 	
-	@Test
+	@Test@Ignore
 	public void getOneBBSTest() {
 		BBSOneVO vo = bs.getOneBBS("1");
 		System.out.println("=========boardServiceTest - getOne Test============");

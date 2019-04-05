@@ -37,5 +37,22 @@
 		UPDATE bbs SET SEE = SEE+1 WHERE id=#{id}
 	</select>
 	
+	<!-- insert bbs -->
+	<select id="insertBBS" parameterType="com.crew.app.data.BBSInsertVO">
+		INSERT INTO board.bbs
+		(id, name, email, pass, title, comment, wdate, ip, see)
+		VALUES(
+		(SELECT MAX 
+		FROM (SELECT MAX(id)+1 As 'MAX' FROM bbs) AS getMax
+		),
+		 #{name}, #{email}, #{pass},#{title}, #{comment}, NOW(), #{ip}, 0
+		);
+	</select>
+	
+	<!-- delete bbs -->
+	<select id="deleteBBS" parameterType="java.lang.String">
+		DELETE FROM bbs WHERE id=#{id}
+	</select>
+	
 	
 </mapper>

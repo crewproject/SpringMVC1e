@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import com.crew.app.board.dao.BoardDAO;
+import com.crew.app.data.BBSInsertVO;
 import com.crew.app.data.BBSListVO;
 import com.crew.app.data.BBSOneVO;
 
@@ -42,6 +43,18 @@ public class BoardServiceImpl implements BoardService{
 	public List<BBSListVO> getListBBS() {
 		setBoardDAO();
 		return boardDAO.selectListBBS();
+	}
+
+	@Override
+	public void newBBS(BBSInsertVO vo) {
+		setBoardDAO();
+		boardDAO.insertBBS(vo);;
+	}
+
+	@Override
+	public void deleteBBS(String id) {
+		setBoardDAO();
+		boardDAO.deleteBBS(id);
 	}
 
 }
