@@ -12,14 +12,23 @@
 	<!-- select one -->
 	<select id="selectOneBBS" parameterType="java.lang.String" resultType="com.crew.app.data.BBSOneVO">
 		SELECT 
-			 id, name, email, pass, title, comment, wdate, see	
+			 id, 
+			 name, 
+			 email,
+			 pass, 
+			 title, 
+			 comment, 
+			 DATE_FORMAT(wdate, '%X/%c/%e') "wdate", 
+			 see	
 		 	 FROM bbs
 		WHERE id=#{id}
 	</select>
 	<!-- select list -->
 	<select id="selectListBBS" resultType="com.crew.app.data.BBSListVO">
 		SELECT 
-			 id, name, title, wdate, see	
+			 id, name, title, 
+			 DATE_FORMAT(wdate, '%X/%c/%e') "wdate",
+			 see	
 		 	 FROM bbs
 	</select>
 	
