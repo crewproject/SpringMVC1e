@@ -32,5 +32,10 @@
 		 	 FROM bbs
 	</select>
 	
+	<!-- update see -->
+	<select id="updateSee" parameterType="java.lang.String">
+		UPDATE bbs SET SEE = SEE+1 WHERE id=#{id}
+	</select>
+	
 	
 </mapper>

@@ -33,6 +33,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BBSOneVO getOneBBS(String id) {
 		setBoardDAO();
+		boardDAO.updateSee(id);
 		return boardDAO.selectOneBBS(id);
 		
 	}

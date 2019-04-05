@@ -11,4 +11,5 @@ public interface BoardDAO {
 	public List<Map<String,Object>> test();
 	public BBSOneVO selectOneBBS(String id);
 	public List<BBSListVO> selectListBBS();
+	public void updateSee(String id);
 }
