@@ -4,18 +4,23 @@ package com.crew.app.board.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.crew.app.board.service.BoardService;
+import com.crew.app.data.BBSInsertVO;
 import com.crew.app.data.BBSListVO;
 import com.crew.app.data.BBSOneVO;
+
 
 @Controller
 public class BoardController {
@@ -47,10 +52,29 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/getone/{id}", method=RequestMethod.GET)
-	public String getList(@PathVariable("id") String id, Model model) {
+	public String getOne(@PathVariable("id") String id, Model model) {
 		BBSOneVO vo = boardService.getOneBBS(id);
 		model.addAttribute("vo",vo);
 		return "BBSOne";
 	}
+	
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public String deleteBBS(
+			@ModelAttribute("id") String id) {
+		boardService.deleteBBS(id);
+		return "redirect:/list";
+	}
+	@RequestMapping(value="/insertBBS")
+	public String insertBBS() {
+		return "Writer";
+	}
+	@RequestMapping(value="/insert", method=RequestMethod.POST)
+	public String newBBS(
+			@ModelAttribute BBSInsertVO vo, HttpServletRequest request) {
+		vo.setIp(request.getRemoteAddr());
+		boardService.newBBS(vo);
+		return "redirect:/list";
+	}
+	
 	
 }

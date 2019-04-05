@@ -23,6 +23,11 @@
 				<td colspan="3">${vo.comment}</td>
 			</tr>
 		</table>
+		<form action="/delete" method="POST">
+			<input type="hidden" name="id" value="${vo.id}" />
+			<input type="submit" value="삭제">
+		</form>
+		<button onclick="location.href='/list'">리스트</button>
 	</section>
 </body>
 </html>
