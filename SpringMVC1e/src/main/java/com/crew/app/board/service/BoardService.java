@@ -12,4 +12,5 @@ public interface BoardService {
 	public List<BBSListVO> getListBBS();
 	public void newBBS(BBSInsertVO vo);
 	public void deleteBBS(String id);
+	public void updateBBS(BBSUpdateVO vo);
 }

@@ -27,6 +27,10 @@
 			<input type="hidden" name="id" value="${vo.id}" />
 			<input type="submit" value="삭제">
 		</form>
+		<form action="/updateBBS" method="POST">
+			<input type="hidden" name="id" value="${vo.id}" />
+			<input type="submit" value="수정">
+		</form>
 		<button onclick="location.href='/list'">리스트</button>
 	</section>
 </body>

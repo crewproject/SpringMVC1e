@@ -12,6 +12,7 @@ import com.crew.app.board.dao.BoardDAO;
 import com.crew.app.data.BBSInsertVO;
 import com.crew.app.data.BBSListVO;
 import com.crew.app.data.BBSOneVO;
+import com.crew.app.data.BBSUpdateVO;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -55,6 +56,12 @@ public class BoardServiceImpl implements BoardService{
 	public void deleteBBS(String id) {
 		setBoardDAO();
 		boardDAO.deleteBBS(id);
+	}
+
+	@Override
+	public void updateBBS(BBSUpdateVO vo) {
+		setBoardDAO();
+		boardDAO.updateBBS(vo);
 	}
 
 }

@@ -9,6 +9,19 @@
 			 id, name, email, pass, title, comment, wdate, ip, see	
 		 	 FROM bbs
 	</select>
+	
+	<!-- insert bbs -->
+	<insert id="insertBBS" parameterType="com.crew.app.data.BBSInsertVO">
+		INSERT INTO board.bbs
+		(id, name, email, pass, title, comment, wdate, ip, see)
+		VALUES(
+		(SELECT MAX 
+		FROM (SELECT MAX(id)+1 As 'MAX' FROM bbs) AS getMax
+		),
+		 #{name}, #{email}, #{pass},#{title}, #{comment}, NOW(), #{ip}, 0
+		);
+	</insert>
+	
 	<!-- select one -->
 	<select id="selectOneBBS" parameterType="java.lang.String" resultType="com.crew.app.data.BBSOneVO">
 		SELECT 
@@ -33,26 +46,24 @@
 	</select>
 	
 	<!-- update see -->
-	<select id="updateSee" parameterType="java.lang.String">
+	<update id="updateSee" parameterType="java.lang.String">
 		UPDATE bbs SET SEE = SEE+1 WHERE id=#{id}
-	</select>
+	</update>
 	
-	<!-- insert bbs -->
-	<select id="insertBBS" parameterType="com.crew.app.data.BBSInsertVO">
-		INSERT INTO board.bbs
-		(id, name, email, pass, title, comment, wdate, ip, see)
-		VALUES(
-		(SELECT MAX 
-		FROM (SELECT MAX(id)+1 As 'MAX' FROM bbs) AS getMax
-		),
-		 #{name}, #{email}, #{pass},#{title}, #{comment}, NOW(), #{ip}, 0
-		);
-	</select>
+	<!-- update bbs -->
+	<update id="updateBBS" parameterType="com.crew.app.data.BBSUpdateVO">
+		UPDATE bbs 
+		SET
+		title = #{title},
+		comment = #{comment}
+		WHERE id=#{id}
+	</update>
+	
 	
 	<!-- delete bbs -->
-	<select id="deleteBBS" parameterType="java.lang.String">
+	<delete id="deleteBBS" parameterType="java.lang.String">
 		DELETE FROM bbs WHERE id=#{id}
-	</select>
+	</delete>
 	
 	
 </mapper>

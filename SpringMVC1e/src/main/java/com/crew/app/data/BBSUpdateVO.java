@@ -6,10 +6,6 @@ public class BBSUpdateVO {
     private Integer id;
     //작성자 이름
     private String name;
-    //작성자 이메일
-    private String email;
-    //게시글 비밀 번호
-    private String pass;
     //게시물 제목
     private String title;
     //게시물 내용
@@ -29,22 +25,6 @@ public class BBSUpdateVO {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
     }
 
     public String getTitle() {
