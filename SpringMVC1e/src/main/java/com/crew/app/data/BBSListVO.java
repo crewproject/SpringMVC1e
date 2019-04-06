@@ -11,8 +11,21 @@ public class BBSListVO {
     private String wdate;
     //조회수
     private Integer see;
+    
+    public BBSListVO() {};
+    
+    public BBSListVO(
+    		Integer id, String name, String title, 
+    		String wdate, Integer see
+    		) {
+		this.id = id;
+		this.name = name;
+		this.title = title;
+		this.wdate = wdate;
+		this.see = see;
+	}
 
-    public Integer getId() {
+	public Integer getId() {
         return id;
     }
 

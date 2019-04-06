@@ -2,85 +2,79 @@ package com.crew.app.data;
 
 public class BBSInsertVO {
 
-	//게시물 아이디
-    private Integer id;
-    //작성자 이름
-    private String name;
-    //작성자 이메일
-    private String email;
-    //게시글 비밀 번호
-    private String pass;
-    //게시물 제목
-    private String title;
-    //게시물 내용
-    private String comment;
-    //작성자 ip
-    private String ip;
-    //조회수
-    private Integer see;
+	// 작성자 이름
+	private String name;
+	// 작성자 이메일
+	private String email;
+	// 게시글 비밀 번호
+	private String pass;
+	// 게시물 제목
+	private String title;
+	// 게시물 내용
+	private String comment;
+	// 작성자 ip
+	private String ip;
+	
+	public BBSInsertVO() {};
+	
+	public BBSInsertVO(
+			String name, String email, String pass, 
+			String title, String comment, String ip
+			) {
+		this.name = name;
+		this.email = email;
+		this.pass = pass;
+		this.title = title;
+		this.comment = comment;
+		this.ip = ip;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getPass() {
+		return pass;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 
-    public String getPass() {
-        return pass;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getComment() {
+		return comment;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
-    public String getComment() {
-        return comment;
-    }
+	public String getIp() {
+		return ip;
+	}
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public Integer getSee() {
-        return see;
-    }
-
-    public void setSee(Integer see) {
-        this.see = see;
-    }
-    
 }

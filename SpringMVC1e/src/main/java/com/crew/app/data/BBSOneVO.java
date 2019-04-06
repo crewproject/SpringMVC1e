@@ -16,8 +16,23 @@ public class BBSOneVO {
     private String wdate;
     //조회수
     private Integer see;
+    
+    public BBSOneVO() {};
+    
+    public BBSOneVO(
+    		Integer id, String name, String pass, String title, 
+    		String comment, String wdate, Integer see
+    		) {
+		this.id = id;
+		this.name = name;
+		this.pass = pass;
+		this.title = title;
+		this.comment = comment;
+		this.wdate = wdate;
+		this.see = see;
+	}
 
-    public Integer getId() {
+	public Integer getId() {
         return id;
     }
 
