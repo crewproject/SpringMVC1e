@@ -14,6 +14,7 @@ import com.crew.app.data.BBSInsertVO;
 import com.crew.app.data.BBSListVO;
 import com.crew.app.data.BBSOneVO;
 import com.crew.app.data.BBSUpdateVO;
+import com.crew.app.data.SearchType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -27,6 +28,14 @@ public class BoardServiceTest {
 
 	@Inject
 	BoardService bs;
+	
+	@Test @Ignore
+	public void testGetSearchListBBS() {
+		
+		List<BBSListVO> bbsList = bs.getSearchListBBS(SearchType.COMMENT, "update");
+		System.out.println("bbsList : "+bbsList);
+		printBBSList(bbsList);
+	}
 
 	// boardService의 createBBS()를 테스트한다.
 	@Test @Ignore
@@ -46,15 +55,7 @@ public class BoardServiceTest {
 	@Test @Ignore
 	public void testGetListBBS() {
 		List<BBSListVO> bbsList = bs.getListBBS();
-		System.out.println("=========boardServiceTest - getList Test============");
-		for (BBSListVO vo : bbsList) {
-			System.out.println("id : " + vo.getId());
-			System.out.println("name : " + vo.getName());
-			System.out.println("title : " + vo.getTitle());
-			System.out.println("wdate : " + vo.getWdate());
-			System.out.println("see : " + vo.getSee());
-			System.out.println("=====================");
-		}
+		printBBSList(bbsList);
 	}
 
 	// boardService의 getOneBBS()를 테스트한다.
@@ -88,5 +89,17 @@ public class BoardServiceTest {
 	public void testRemoveBBS() {
 		String id = "12";
 		bs.removeBBS(id);
+	}
+	
+	public void printBBSList(List<BBSListVO> bbsList) {
+		System.out.println("=========boardServiceTest - getList Test============");
+		for (BBSListVO vo : bbsList) {
+			System.out.println("id : " + vo.getId());
+			System.out.println("name : " + vo.getName());
+			System.out.println("title : " + vo.getTitle());
+			System.out.println("wdate : " + vo.getWdate());
+			System.out.println("see : " + vo.getSee());
+			System.out.println("=====================");
+		}
 	}
 }

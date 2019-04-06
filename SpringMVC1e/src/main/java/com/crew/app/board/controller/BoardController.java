@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.crew.app.board.service.BoardService;
 import com.crew.app.data.BBSInsertVO;
 import com.crew.app.data.BBSListVO;
 import com.crew.app.data.BBSOneVO;
 import com.crew.app.data.BBSUpdateVO;
+import com.crew.app.data.SearchType;
 
 @Controller
 public class BoardController {
@@ -43,10 +45,32 @@ public class BoardController {
 		return "test";
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String getList(Model model) {
+	@RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
+	public String getList(Model model,
+			@RequestParam(value="searchType", required=false) String searchType,
+			@RequestParam(value="text", required=false) String text
+			) {
+		
+		
+		if (searchType != null) {//searchType이 있을 때 SearchType과 일치하는지 확인
+			for (SearchType type : SearchType.values()) {
+				if (type.toString().equals(searchType)) {
+					model.addAttribute("searchType", searchType);
+				}
+			}
+			
+			//searchType과 text가 모두 있을경우 리턴
+			if(text != null) {
+				model.addAttribute("text",text);
+				model.addAttribute("vo",
+						boardService.getSearchListBBS(SearchType.valueOf(searchType), text));
+				return "BBSList";
+			}
+		}
+		
 		List<BBSListVO> bbsList = boardService.getListBBS();
 		model.addAttribute("vo", bbsList);
+		
 		return "BBSList";
 	}
 

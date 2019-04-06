@@ -13,6 +13,7 @@ import com.crew.app.data.BBSInsertVO;
 import com.crew.app.data.BBSListVO;
 import com.crew.app.data.BBSOneVO;
 import com.crew.app.data.BBSUpdateVO;
+import com.crew.app.data.SearchType;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -64,5 +65,13 @@ public class BoardServiceImpl implements BoardService {
 		setBoardDAO();
 		boardDAO.updateBBS(vo);
 	}
+
+	@Override
+	public List<BBSListVO> getSearchListBBS(SearchType searchType, String text) {
+		setBoardDAO();
+		return boardDAO.selectSearchListBBS(searchType, text);
+	}
+	
+	
 
 }
