@@ -5,12 +5,21 @@ import java.util.Map;
 
 import com.crew.app.data.*;
 
-
 public interface BoardService {
-	public List<Map<String,Object>> test();
+	public List<Map<String, Object>> test();
+	
+	//dao를 통해 bbs를 받아온다.
 	public BBSOneVO getOneBBS(String id);
+
+	//dao를 통해 bbs목록을를 받아온다.
 	public List<BBSListVO> getListBBS();
-	public void newBBS(BBSInsertVO vo);
-	public void deleteBBS(String id);
-	public void updateBBS(BBSUpdateVO vo);
+	
+	//dao를 통해 bbs를 추가한다.
+	public void createBBS(BBSInsertVO vo);
+	
+	//dao를 통해 bbs를 제거한다.
+	public void removeBBS(String id);
+	
+	//bbs를 통해 bbs를 수정한다.
+	public void modifyBBS(BBSUpdateVO vo);
 }

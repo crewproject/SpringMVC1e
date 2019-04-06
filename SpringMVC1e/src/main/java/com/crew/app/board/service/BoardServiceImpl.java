@@ -15,15 +15,15 @@ import com.crew.app.data.BBSOneVO;
 import com.crew.app.data.BBSUpdateVO;
 
 @Service
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
 
 	@Inject
 	SqlSessionTemplate sqlSession;
 	BoardDAO boardDAO;
-	
+
 	public void setBoardDAO() {
 		this.boardDAO = sqlSession.getMapper(BoardDAO.class);
-		System.out.println("setBoardDAO : "+boardDAO);
+		System.out.println("setBoardDAO : " + boardDAO);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class BoardServiceImpl implements BoardService{
 		setBoardDAO();
 		boardDAO.updateSee(id);
 		return boardDAO.selectOneBBS(id);
-		
+
 	}
 
 	@Override
@@ -47,19 +47,20 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void newBBS(BBSInsertVO vo) {
+	public void createBBS(BBSInsertVO vo) {
 		setBoardDAO();
-		boardDAO.insertBBS(vo);;
+		boardDAO.insertBBS(vo);
+		;
 	}
 
 	@Override
-	public void deleteBBS(String id) {
+	public void removeBBS(String id) {
 		setBoardDAO();
 		boardDAO.deleteBBS(id);
 	}
 
 	@Override
-	public void updateBBS(BBSUpdateVO vo) {
+	public void modifyBBS(BBSUpdateVO vo) {
 		setBoardDAO();
 		boardDAO.updateBBS(vo);
 	}

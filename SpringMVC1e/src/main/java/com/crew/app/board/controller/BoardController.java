@@ -59,7 +59,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String deleteBBS(@ModelAttribute("id") String id) {
-		boardService.deleteBBS(id);
+		boardService.removeBBS(id);
 		return "redirect:/list";
 	}
 
@@ -71,7 +71,7 @@ public class BoardController {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insertBBS(@ModelAttribute BBSInsertVO vo, HttpServletRequest request) {
 		vo.setIp(request.getRemoteAddr());
-		boardService.newBBS(vo);
+		boardService.createBBS(vo);
 		return "redirect:/list";
 	}
 
@@ -100,7 +100,7 @@ public class BoardController {
 		System.out.println("vo.id : "+vo.getId());
 		System.out.println("vo.title : "+vo.getTitle());
 		System.out.println("vo.comment : "+vo.getComment());
-		boardService.updateBBS(vo);
+		boardService.modifyBBS(vo);
 		return "redirect:/getone/" + vo.getId();
 	}
 
