@@ -12,11 +12,19 @@
 	
 	<!-- insert bbs -->
 	<insert id="insertBBS" parameterType="com.crew.app.data.BBSInsertVO">
-		INSERT INTO board.bbs
-		(id, name, email, pass, title, comment, wdate, ip, see)
+		INSERT INTO board.bbs(
+			id, 
+			name, 
+			email, 
+			pass, 
+			title, 
+			comment, 
+			wdate, 
+			ip, 
+			see)
 		VALUES(
-		(SELECT MAX 
-		FROM (SELECT MAX(id)+1 As 'MAX' FROM bbs) AS getMax
+			(SELECT MAX 
+			FROM (SELECT MAX(id)+1 As 'MAX' FROM bbs) AS getMax
 		),
 		 #{name}, #{email}, #{pass},#{title}, #{comment}, NOW(), #{ip}, 0
 		);
@@ -33,7 +41,8 @@
 			 comment, 
 			 DATE_FORMAT(wdate, '%X/%c/%e') "wdate", 
 			 see	
-		 	 FROM bbs
+		FROM 
+			bbs
 		WHERE id=#{id}
 	</select>
 	<!-- select list -->

@@ -21,7 +21,7 @@ public class BoardServiceImpl implements BoardService {
 	@Inject
 	SqlSessionTemplate sqlSession;
 	BoardDAO boardDAO;
-
+	
 	public void setBoardDAO() {
 		this.boardDAO = sqlSession.getMapper(BoardDAO.class);
 		System.out.println("setBoardDAO : " + boardDAO);
